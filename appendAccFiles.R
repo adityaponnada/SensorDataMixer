@@ -61,3 +61,8 @@ for (i in 1:nrow(appendedFile)){
 
   
 }
+
+new_df <- appendedFile %>%
+  select(HEADER_TIME_STAMP, everything())
+
+write.csv(file = "C:/Users/Dharam/Downloads/MDCAS Files/SIMULATED_DATA/AppendedFile.csv", x = new_df, quote = FALSE, row.names = FALSE, col.names = TRUE, sep = ",")
