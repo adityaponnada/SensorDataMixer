@@ -6,8 +6,8 @@ secondFileRowCounter = 1
 
 jumbleDataFrame <- data.frame()
 
-thresholdOne = 1024
-thresholdTwo = 1024
+thresholdOne = 12000
+thresholdTwo = 12000
 
 j = 1
 k = 1
@@ -82,6 +82,8 @@ tempPlor <- plot_ly(new_df_jumbled, x = ~HEADER_TIME_STAMP, y = ~X_ACCELERATION_
   add_trace(y = ~Y_ACCELERATION_METERS_PER_SECOND_SQUARED, name = 'Y_acc', mode = 'lines') %>%
   add_trace(y = ~Z_ACCELERATION_METERS_PER_SECOND_SQUARED, name = 'Z_acc', mode = 'lines')
 
+
+new_df_jumbled <- head(new_df_jumbled, 177600)
 
 write.csv(file = "C:/Users/Dharam/Downloads/MDCAS Files/SIMULATED_DATA/Jumbled/JumbledDataFile.csv", x = new_df_jumbled, quote = FALSE, row.names = FALSE, col.names = TRUE, sep = ",")
  
