@@ -6,8 +6,12 @@ secondFileRowCounter = 1
 
 jumbleDataFrame <- data.frame()
 
-thresholdOne = 12000
-thresholdTwo = 12000
+RollDie = function(n) sample(24000:48000,n,replace=T)
+
+# thresholdOne = 12000 ##Make them a random number
+# thresholdTwo = 12000 ## Make them random numbers
+thresholdOne = RollDie(1) ##Make them a random number
+thresholdTwo = RollDie(1) ## Make them random numbers
 
 j = 1
 k = 1
@@ -18,6 +22,8 @@ testTwo <- head(secondFile, 5120)
 for (indexOne in j:nrow(firstFile)){
   
   print(paste0("First file at: ", indexOne, " first file counter is: ", firstFileRowCounter))
+  
+  thresholdOne = RollDie(1)
   
   if (firstFileRowCounter <= thresholdOne){
     
@@ -34,6 +40,7 @@ for (indexOne in j:nrow(firstFile)){
     j = indexOne
     
     ### When n rows are done go to the next file
+    thresholdTwo = RollDie(1)
     
       for (indexTwo in k:nrow(secondFile)){
         print(paste0("Second file at: ", indexTwo, " second file counter is: ", secondFileRowCounter))
@@ -58,7 +65,7 @@ for (indexOne in j:nrow(firstFile)){
   }
   
 
-newStartTime <- as.POSIXct("2017-11-15 18:00:00.000")
+newStartTime <- as.POSIXct("2017-11-15 13:00:00.000")
 
 jumbleDataFrame$HEADER_TIME_STAMP <- newStartTime
 
@@ -83,7 +90,7 @@ tempPlor <- plot_ly(new_df_jumbled, x = ~HEADER_TIME_STAMP, y = ~X_ACCELERATION_
   add_trace(y = ~Z_ACCELERATION_METERS_PER_SECOND_SQUARED, name = 'Z_acc', mode = 'lines')
 
 
-new_df_jumbled <- head(new_df_jumbled, 177600)
+new_df_jumbled <- head(new_df_jumbled, 230400)
 
-write.csv(file = "C:/Users/Dharam/Downloads/MDCAS Files/SIMULATED_DATA/Jumbled/JumbledDataFile.csv", x = new_df_jumbled, quote = FALSE, row.names = FALSE, col.names = TRUE, sep = ",")
+write.csv(file = "C:/Users/Dharam/Downloads/MDCAS Files/SIMULATED_DATA/AMBULATION_SEDENTARY/AMBULATION_SED_v2.csv", x = new_df_jumbled, quote = FALSE, row.names = FALSE, col.names = TRUE, sep = ",")
  
