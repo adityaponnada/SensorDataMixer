@@ -27,3 +27,13 @@ secondFile <- secondFile[, keep]
 #thirdFile <- thirdFile[, keep]
 
 
+### Read SigAligner files
+
+readJumbled <- read.csv("C:/Users/Dharam/Downloads/MDCAS Files/SIMULATED_DATA/AMBULATION_SEDENTARY/Ambulation_SED_SignalLiner/0600_SLEEP.csv", sep = ",", header = TRUE)
+
+readJumbled1 <- read.csv("C:/Users/Dharam/Downloads/MDCAS Files/SIMULATED_DATA/AMBULATION_SEDENTARY/Ambulation_SED_SignalLiner/1000_AMBULATION_SED.csv", sep = ",", header = TRUE)
+
+
+head(readJumbled1)
+
+readJumbled1$HEADER_TIME_STAMP <- as.POSIXct(readJumbled1$HEADER_TIME_STAMP, format = "%Y-%m-%d %H:%M:%OS")
